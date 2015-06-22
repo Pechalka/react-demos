@@ -1,0 +1,56 @@
+@import '~tether-drop/dist/css/drop-theme-arrows.css'
+
+@import '~bootstrap-styl/bootstrap/variables.styl'
+@import '~bootstrap-styl/bootstrap/mixins.styl';
+
+$font-family-serif ?= 'Merriweather', serif
+$font-family-base ?= $font-family-serif
+$icon-font-path = '../node_modules/bootstrap-styl/fonts/'
+
+@import '~bootstrap-styl/bootstrap/index.styl';
+
+
+.constructor-panel 
+	position fixed 
+	top 50px
+	left 50px
+	z-index 3
+	
+
+.block-panel 
+	position fixed
+	top 50px
+	right 50px
+	z-index 3
+	background #fff
+	border 1px solid #ccc
+			
+
+.block
+	margin  5px
+	border  1px solid #ccc
+	height 200px
+	position relative
+	&:hover
+		border 1px solid red
+		.block__toolbar
+			display inline-block	
+	&--disabled
+		&:hover
+			border  1px solid #ccc
+			.block__toolbar
+				display none
+	&__toolbar
+		position absolute
+		background #ccc
+		display none
+		top 50px
+		left 40%
+	&__glass
+		margin -5px
+		background rgba(0, 0,0, 0.3)
+		position absolute
+		top 0
+		bottom 0
+		left 0
+		right 0
