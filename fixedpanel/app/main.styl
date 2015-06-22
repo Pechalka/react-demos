@@ -29,7 +29,7 @@ $icon-font-path = '../node_modules/bootstrap-styl/fonts/'
 .block
 	margin  5px
 	border  1px solid #ccc
-	height 200px
+	min-height 80px
 	position relative
 	&:hover
 		border 1px solid red
@@ -40,11 +40,17 @@ $icon-font-path = '../node_modules/bootstrap-styl/fonts/'
 			border  1px solid #ccc
 			.block__toolbar
 				display none
+	&--edit
+		&:hover
+			border  1px solid #ccc
+			.block__toolbar
+				display none
 	&__toolbar
 		position absolute
 		background #ccc
 		display none
-		top 50px
+		z-index 5
+		top 40%
 		left 40%
 	&__glass
 		margin -5px
