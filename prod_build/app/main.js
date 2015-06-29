@@ -1,5 +1,4 @@
 import './main.styl';
-import './test.css';
 
 var React = require('react');
 
