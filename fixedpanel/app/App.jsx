@@ -222,7 +222,8 @@ var App = React.createClass({
 			blocks : [
 				createBlock('menu'),
 				createBlock('grid'),
-				createBlock('footer')
+				createBlock('footer'),
+				createBlock('grid')
 			],
 			editBlock : null,
 			index : -1
