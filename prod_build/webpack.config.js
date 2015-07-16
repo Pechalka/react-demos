@@ -53,4 +53,10 @@ module.exports = {
     // stylus: {
     //     use: [stylus_plugin()]
     // }
+
+    , devServer: {
+      proxy: {
+        '*': 'http://localhost:8000'
+      }
+    }
 };

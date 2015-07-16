@@ -3,57 +3,45 @@ var cx = React.addons.classSet;
 
 var {OverlayTrigger, Tooltip, Button , Glyphicon, ButtonToolbar, Input, Grid, Col, Row } = require('react-bootstrap');
 
-var PagesStore = require('./stores/pages');
+
 var PageStore = require('./stores/page');
 var SitesStore = require('./stores/sites');
-
+var ThemsStore = require('./stores/thems');
+var PaletteList = require('./components/PaletteList');
 
 var actions = require('actions');
 
 var Reflux = require('reflux');
 
-var PageList = React.createClass({
+var PageList = require('components/PageList')
+
+
+var SiteList = require('components/SiteList')
+
+var ThemList = React.createClass({
 	mixins : [
-		Reflux.connect(PagesStore, 'pages')
+		Reflux.connect(ThemsStore, 'thems')
 	],
-	renderPage : function(page, index){
-		return <li key={index} className="clearfix">
-			<a onClick={actions.selectPage.bind(null, page)} href="javascript:void(0)">{page.title}</a>
-			{!page.isHomePage &&<Button onClick={actions.removePage.bind(null, page)} className="pull-right">remove</Button>}
-		</li>
+	install : function(them){
+		actions.addSite(them)
 	},
-	render : function(){
-		var items = this.state.pages.map(this.renderPage)
-		return <div>
-			<ul className="list-unstyled">
-				{items}
-			</ul>
-			<Button onClick={actions.addPage}>add page</Button>
-		</div>
-	}
-})
-
-
-var SiteList = React.createClass({
-	mixins : [
-		Reflux.connect(SitesStore, 'sites')
-	],
 	renderItem : function(item, index){
-		return <li key={index} className="clearfix">
-			<a  onClick={actions.selectSite.bind(null, item)}  href="javascript:void(0)">{item.title}</a>
-			{index != 0 && <Button className="pull-right">remove</Button>}
-		</li>
+		return <div key={index} className="them text-center">
+			{item.title}
+			<Button onClick={this.install.bind(null, item)} className="pull-right">install</Button>
+		</div>
 	},
 	render : function(){
-		var items = this.state.sites.map(this.renderItem)
+		var items = this.state.thems.map(this.renderItem)
 		return <div>
-			<ul className="list-unstyled">
+			<h3>Thems</h3>
+			<div className="clearfix">
 				{items}
-			</ul>
-			<Button onClick={actions.addSite}>add site</Button>
+			</div>
 		</div>
 	}
 })
+
 
 
 
@@ -78,6 +66,8 @@ var Panel = React.createClass({
 		return <div className="constructor-panel">
 			<PageList/>
 			<SiteList/>
+			<ThemList/>
+			<PaletteList/>
 		</div>
 	}
 })

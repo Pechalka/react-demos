@@ -6,9 +6,10 @@ var actions = Reflux.createActions([
 	'showHomePage',
 
 	'selectSite',
+	'selectFistSite',
+	'appStart',
 
-
-	'appStart'
+	'selectPalette'
 ])
 
 
@@ -17,6 +18,10 @@ actions.removePage = Reflux.createAction({
 })
 
 actions.addSite = Reflux.createAction({
+	asyncResult : true
+})
+
+actions.removeSite = Reflux.createAction({
 	asyncResult : true
 })
 
